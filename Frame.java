@@ -16,6 +16,7 @@ public class Frame{
      public JTextArea textArea;
      public Time time;
      private long midtime;
+     //可视化界面
      public void init(){
          frame = new JFrame();
          frame.setTitle("倒计时");
@@ -57,9 +58,11 @@ public class Frame{
          label5 = new JLabel();
          label5.setForeground(Color.RED);
          panel4.add(label5);
+         //添加监听
          button.addActionListener(new ActionListener() {
              @Override
              public void actionPerformed(ActionEvent e) {
+                 //获取文本域中内容
                  hourtime = Integer.parseInt(hour.getText());
                  mintime = Integer.parseInt(min.getText());
                  secondtime = Integer.parseInt(second.getText());
@@ -69,6 +72,7 @@ public class Frame{
                  new Thread(new Runnable() {
                      @Override
                      public void run() {
+                         //每1秒刷新倒计时文本内容
                          while (midtime > 0){
                              midtime--;
                              long hh = midtime / 60 / 60 % 60 ;
@@ -85,8 +89,7 @@ public class Frame{
                  }).start();
              }
          });
-
-
+         //
          Box box = Box.createVerticalBox();
          box.add(panel1);
          box.add(panel2);

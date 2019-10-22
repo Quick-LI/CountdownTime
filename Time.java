@@ -7,20 +7,25 @@ public class Time {
     private long starttime,midtime,endtime;
     private int year,month,day,hour,min,second;
     public Time (){
+        //获取当前时间，分别保存年，月，日参数
         calendar = Calendar.getInstance();
         year = calendar.get(Calendar.YEAR);
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
+        //设置倒计时时间
         calendar.set(year,month,day,hour-1,min,second);
+        //将倒计时时间转化为毫秒
         endtime = calendar.getTimeInMillis();
     }
     public long countdown(int hour,int min,int second){
+        //倒计时1：从当前时间开始倒数
         date = new Date();
         starttime = date.getTime();
         midtime = (endtime - starttime)/1000;
         return midtime;
     }
     public long countdown2(int hour,int min,int second){
+        //倒计时2：从设置时间开始倒数
         midtime = endtime / 1000;
         return midtime;
     }
